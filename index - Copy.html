@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B.O. Partners | Tu Back-Office Estratégico</title>
+  <meta name="description" content="Hacemos que tu administración fluya. Ordenamos tus números, optimizamos tus procesos y te devolvemos el tiempo que necesitás para liderar. Sin estructuras fijas, con resultados reales." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ========================================
+       DESIGN TOKENS & RESET
+    ======================================== */
+    :root {
+      --navy:       #0D1B2A;
+      --navy-mid:   #12243A;
+      --navy-light: #1E3A5F;
+      --teal:       #00C9B1;
+      --teal-dim:   #00A896;
+      --teal-glow:  rgba(0, 201, 177, 0.15);
+      --white:      #FFFFFF;
+      --off-white:  #F4F7FA;
+      --gray-100:   #E8EDF3;
+      --gray-400:   #8A9AB5;
+      --gray-600:   #5A6A82;
+      --font-body:  'Inter', sans-serif;
+      --font-head:  'Montserrat', sans-serif;
+      --radius-sm:  8px;
+      --radius-md:  16px;
+      --radius-lg:  24px;
+      --radius-xl:  40px;
+      --shadow-card: 0 4px 32px rgba(13,27,42,0.10);
+      --shadow-glow: 0 0 40px rgba(0,201,177,0.18);
+      --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       UTILITIES
+    ======================================== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-glow);
+      border: 1px solid rgba(0,201,177,0.30);
+      color: var(--teal);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    /* ========================================
+       NAVBAR
+    ======================================== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      transition: var(--transition);
+    }
+
+    nav.scrolled {
+      background: rgba(13,27,42,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      text-decoration: none;
+    }
+
+    .logo-bo {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-bo span {
+      color: var(--teal);
+    }
+
+    .logo-partners {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-left: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray-400);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .btn-nav {
+      background: var(--teal);
+      color: var(--navy) !important;
+      font-weight: 700 !important;
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+
+    .btn-nav:hover {
+      background: var(--teal-dim) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 40%, rgba(0,201,177,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 20% 70%, rgba(30,58,95,0.5) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero-title .accent { color: var(--teal); }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--gray-400);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-dim);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .btn-ghost {
+      color: var(--white);
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 14px 24px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: all var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* Hero Card Visual */
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(0,201,177,0.12) 0%, transparent 70%);
+    }
+
+    .hc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .hc-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gray-400);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hc-badge {
+      background: rgba(0,201,177,0.15);
+      color: var(--teal);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .hc-metric {
+      margin-bottom: 20px;
+    }
+
+    .hc-metric-label {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      margin-bottom: 6px;
+    }
+
+    .hc-metric-bar-bg {
+      height: 6px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .hc-metric-bar {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--teal), #00E5D0);
+      animation: growBar 1.8s ease-out forwards;
+      transform-origin: left;
+    }
+
+    @keyframes growBar {
+      from { width: 0%; }
+    }
+
+    .hc-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 24px 0;
+    }
+
+    .hc-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .hc-stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+    }
+
+    .hc-stat-value {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+
+    .hc-stat-value.teal { color: var(--teal); }
+
+    .hc-stat-label {
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      margin-top: 2px;
+    }
+
+    /* Notification pop */
+    .hero-notif {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--navy-mid);
+      border: 1px solid rgba(0,201,177,0.25);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      animation: floatUp 3s ease-in-out infinite;
+    }
+
+    @keyframes floatUp {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    .notif-icon {
+      width: 36px; height: 36px;
+      background: var(--teal-glow);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .notif-text strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .notif-text span {
+      font-size: 0.7rem;
+      color: var(--gray-400);
+    }
+
+    /* ========================================
+       PAIN SECTION
+    ======================================== */
+    #pain {
+      padding: 120px 0 100px;
+      background: var(--off-white);
+      color: var(--navy);
+    }
+
+    #pain .tag {
+      background: rgba(13,27,42,0.06);
+      border-color: rgba(13,27,42,0.15);
+      color: var(--navy-light);
+    }
+
+    #pain .tag::before { background: var(--navy); animation: none; }
+
+    .pain-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .pain-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-top: 16px;
+      color: var(--navy);
+    }
+
+    .pain-subtitle {
+      color: var(--gray-600);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 16px auto 0;
+      line-height: 1.7;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+
+    .pain-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      transition: all var(--transition);
+      cursor: default;
+    }
+
+    .pain-card:hover {
+      border-color: var(--navy-light);
+      box-shadow: 0 8px 32px rgba(13,27,42,0.10);
+      transform: translateY(-4px);
+    }
+
+    .pain-emoji {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .pain-card h3 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .pain-card p {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    .pain-callout {
+      background: var(--navy);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pain-callout::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 120% at 50% 0%, rgba(0,201,177,0.10) 0%, transparent 70%);
+    }
+
+    .pain-quote {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .pain-quote .teal { color: var(--teal); }
+
+    /* ========================================
+       SOLUTIONS SECTION
+    ======================================== */
+    #solutions {
+      padding: 120px 0;
+    }
+
+    .solutions-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-top: 16px;
+    }
+
+    .section-title .accent { color: var(--teal); }
+
+    .section-subtitle {
+      color: var(--gray-400);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 16px auto 0;
+      line-height: 1.7;
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .sol-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sol-card:hover {
+      border-color: rgba(0,201,177,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+
+    .sol-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+      border-color: rgba(0,201,177,0.20);
+    }
+
+    .sol-icon {
+      width: 52px; height: 52px;
+      background: var(--teal-glow);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .sol-card h3 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .sol-card p {
+      color: var(--gray-400);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .sol-features {
+      list-style: none;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sol-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--gray-400);
+    }
+
+    .sol-features li::before {
+      content: '✓';
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ========================================
+       MINDSET SECTION
+    ======================================== */
+    #mindset {
+      padding: 100px 0;
+      background: var(--navy-mid);
+    }
+
+    .mindset-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .mindset-content .section-title { text-align: left; }
+    .mindset-content .section-subtitle { text-align: left; margin-left: 0; }
+
+    .mindset-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      transition: all var(--transition);
+    }
+
+    .pillar:hover {
+      border-color: rgba(0,201,177,0.20);
+      background: rgba(0,201,177,0.04);
+    }
+
+    .pillar-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .pillar h4 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .pillar p {
+      font-size: 0.83rem;
+      color: var(--gray-400);
+      line-height: 1.6;
+    }
+
+    /* Mockup side */
+    .mindset-visual {
+      position: relative;
+    }
+
+    .tool-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .tool-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      transition: all var(--transition);
+    }
+
+    .tool-item:hover {
+      border-color: rgba(0,201,177,0.20);
+      transform: translateX(6px);
+    }
+
+    .tool-logo {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .tool-info strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .tool-info span {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+    }
+
+    .tool-tag {
+      margin-left: auto;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--teal);
+      background: var(--teal-glow);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* ========================================
+       PRICING / PLANS
+    ======================================== */
+    #pricing {
+      padding: 120px 0;
+    }
+
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .plan-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      position: relative;
+      transition: all var(--transition);
+    }
+
+    .plan-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .plan-card.popular {
+      border-color: var(--teal);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--teal);
+      color: var(--navy);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+    }
+
+    .plan-price {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 2.2rem;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .plan-price .currency {
+      font-size: 1rem;
+      color: var(--gray-400);
+      font-weight: 500;
+      vertical-align: super;
+    }
+
+    .plan-period {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      margin-bottom: 28px;
+    }
+
+    .plan-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 24px 0;
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--gray-400);
+    }
+
+    .plan-features li.included { color: var(--white); }
+
+    .plan-features li::before {
+      content: '—';
+      color: var(--gray-600);
+      flex-shrink: 0;
+    }
+
+    .plan-features li.included::before {
+      content: '✓';
+      color: var(--teal);
+    }
+
+    .btn-plan {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all var(--transition);
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn-plan-primary {
+      background: var(--teal);
+      color: var(--navy);
+    }
+
+    .btn-plan-primary:hover {
+      background: var(--teal-dim);
+      transform: translateY(-2px);
+    }
+
+    .btn-plan-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .btn-plan-ghost:hover {
+      border-color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* ========================================
+       CTA SECTION
+    ======================================== */
+    #cta {
+      padding: 120px 0;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+      border: 1px solid rgba(0,201,177,0.20);
+      border-radius: var(--radius-xl);
+      padding: 80px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% -20%, rgba(0,201,177,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 100%, rgba(0,201,177,0.06) 0%, transparent 60%);
+    }
+
+    .cta-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .cta-title .accent { color: var(--teal); }
+
+    .cta-subtitle {
+      color: var(--gray-400);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .cta-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .cta-input {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .cta-input::placeholder { color: var(--gray-600); }
+    .cta-input:focus { border-color: var(--teal); }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 48px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--gray-400);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    /* ========================================
+       SCROLL ANIMATIONS
+    ======================================== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .solutions-grid { grid-template-columns: 1fr; }
+      .sol-card.featured { grid-column: 1; display: block; }
+      .mindset-inner { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+      .cta-form { flex-direction: column; }
+      .cta-box { padding: 48px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a class="logo" href="#hero">
+        <span class="logo-bo">B.<span>O</span>.</span>
+        <span class="logo-partners">Partners</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#pain">El Problema</a></li>
+        <li><a href="#solutions">Soluciones</a></li>
+        <li><a href="#mindset">Cómo Trabajamos</a></li>
+        <li><a href="#pricing">Planes</a></li>
+        <li><a href="#cta" class="btn-nav">Diagnóstico Gratis</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-grid">
+
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="tag">Back-Office para Pymes & Emprendedores</span>
+        </div>
+        <h1 class="hero-title">
+          Hacemos que tu<br/>
+          administración<br/>
+          <span class="accent">fluya.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Somos tu equipo de back-office. Ordenamos tus números, optimizamos tus procesos y te devolvemos el tiempo que necesitás para liderar. Sin estructuras fijas, con resultados reales.
+        </p>
+        <div class="hero-cta-group">
+          <a id="hero-cta-primary" href="#cta" class="btn-primary">
+            Agendá tu diagnóstico gratis
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a id="hero-cta-secondary" href="#solutions" class="btn-ghost">
+            Ver soluciones
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hc-header">
+            <span class="hc-title">Panel de Control Mensual</span>
+            <span class="hc-badge">● En Vivo</span>
+          </div>
+
+          <div class="hc-metric">
+            <p class="hc-metric-label">Control de Gastos · % optimizado</p>
+            <div class="hc-metric-bar-bg">
+              <div class="hc-metric-bar" style="width: 82%"></div>
+            </div>
+          </div>
+          <div class="hc-metric">
+            <p class="hc-metric-label">Facturación al día</p>
+            <div class="hc-metric-bar-bg">
+              <div class="hc-metric-bar" style="width: 95%; animation-delay: 0.2s"></div>
+            </div>
+          </div>
+          <div class="hc-metric">
+            <p class="hc-metric-label">Documentación completa</p>
+            <div class="hc-metric-bar-bg">
+              <div class="hc-metric-bar" style="width: 68%; animation-delay: 0.4s"></div>
+            </div>
+          </div>
+
+          <div class="hc-divider"></div>
+
+          <div class="hc-stats">
+            <div class="hc-stat">
+              <p class="hc-stat-value teal">−15%</p>
+              <p class="hc-stat-label">Gastos invisibles detectados</p>
+            </div>
+            <div class="hc-stat">
+              <p class="hc-stat-value">+10 hs</p>
+              <p class="hc-stat-label">Tiempo recuperado / semana</p>
+            </div>
+            <div class="hc-stat">
+              <p class="hc-stat-value teal">100%</p>
+              <p class="hc-stat-label">Docs en la nube</p>
+            </div>
+            <div class="hc-stat">
+              <p class="hc-stat-value">0</p>
+              <p class="hc-stat-label">Papeles sin orden</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-notif">
+          <div class="notif-icon">📊</div>
+          <div class="notif-text">
+            <strong>Reporte listo</strong>
+            <span>Tu cierre de marzo está en la nube</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAIN -->
+  <section id="pain">
+    <div class="container">
+      <div class="pain-header fade-up">
+        <span class="tag">¿Te pasa esto?</span>
+        <h2 class="pain-title">El desorden administrativo<br/>tiene nombre. Y un costo.</h2>
+        <p class="pain-subtitle">Fundar un negocio es increíble. Pero gestionarlo puede ser un caos que frena tu crecimiento sin que te des cuenta.</p>
+      </div>
+
+      <div class="pain-grid">
+        <div class="pain-card fade-up">
+          <div class="pain-emoji">📉</div>
+          <h3>¿Creció tu empresa de golpe?</h3>
+          <p>Las ventas explotan pero los procesos no escalan. El área admin se convierte en un cuello de botella.</p>
+        </div>
+        <div class="pain-card fade-up">
+          <div class="pain-emoji">🤯</div>
+          <h3>¿El Excel te da miedo?</h3>
+          <p>Planillas que crecieron sin control, sin fórmulas, sin estructura. Datos que no te dicen nada útil.</p>
+        </div>
+        <div class="pain-card fade-up">
+          <div class="pain-emoji">💸</div>
+          <h3>¿Cuánto ganás realmente?</h3>
+          <p>Facturás bien pero no sabés cuánto queda después de impuestos, costos fijos y gastos varios.</p>
+        </div>
+        <div class="pain-card fade-up">
+          <div class="pain-emoji">📂</div>
+          <h3>¿Contratos sin archivar?</h3>
+          <p>Documentos dispersos, facturas sin registrar, legajos incompletos. Un caos que asusta cuando llega una auditoría.</p>
+        </div>
+        <div class="pain-card fade-up">
+          <div class="pain-emoji">⏳</div>
+          <h3>¿Tiempo que no alcanza?</h3>
+          <p>Pasás más horas en la administración que en lo que realmente te hace crecer: vender, crear y liderar.</p>
+        </div>
+        <div class="pain-card fade-up">
+          <div class="pain-emoji">📬</div>
+          <h3>¿Redes sin respuesta?</h3>
+          <p>Los mensajes de clientes se acumulan sin respuesta. Oportunidades que se pierden por falta de tiempo.</p>
+        </div>
+      </div>
+
+      <div class="pain-callout fade-up">
+        <p class="pain-quote">
+          "El desorden administrativo es el<br/>
+          <span class="teal">techo invisible</span> de tu crecimiento."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section id="solutions">
+    <div class="container">
+      <div class="solutions-header fade-up">
+        <span class="tag">Lo que hacemos</span>
+        <h2 class="section-title">El stack de soluciones<br/>que tu negocio necesita</h2>
+        <p class="section-subtitle">No adivinamos, analizamos. Usamos herramientas digitales para que todo sea transparente y esté a un clic de distancia.</p>
+      </div>
+
+      <div class="solutions-grid">
+        <div class="sol-card featured fade-up">
+          <div>
+            <div class="sol-icon">⚡</div>
+            <h3>Setup de Facturación & Cobros</h3>
+            <p>Automatizamos y hacemos seguimiento de tus cobros para que no pierdas ni un peso. Tu ciclo de caja, bajo control.</p>
+            <ul class="sol-features">
+              <li>Automatización de facturas recurrentes</li>
+              <li>Seguimiento de deudores y cobranzas</li>
+              <li>Conciliación bancaria mensual</li>
+              <li>Alertas de vencimientos</li>
+            </ul>
+          </div>
+          <div>
+            <div style="background: rgba(0,201,177,0.08); border: 1px solid rgba(0,201,177,0.15); border-radius: 16px; padding: 28px;">
+              <p style="font-size: 0.75rem; color: var(--teal); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">Resultado típico</p>
+              <p style="font-family: var(--font-head); font-size: 2rem; font-weight: 900; line-height: 1.1; margin-bottom: 8px;">−3 horas/semana</p>
+              <p style="font-size: 0.85rem; color: var(--gray-400);">de tiempo dedicado a perseguir pagos y ordenar facturas manualmente.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sol-card fade-up">
+          <div class="sol-icon">📊</div>
+          <h3>Análisis de Costos</h3>
+          <p>Reportes mensuales que se entienden, sin palabras raras. Sabés dónde está cada peso y tomás decisiones con datos reales.</p>
+          <ul class="sol-features">
+            <li>Dashboard de rentabilidad mensual</li>
+            <li>Detección de gastos invisibles</li>
+            <li>Análisis por categoría</li>
+          </ul>
+        </div>
+
+        <div class="sol-card fade-up">
+          <div class="sol-icon">📁</div>
+          <h3>Gestión Documental</h3>
+          <p>Todo ordenado en la nube para cuando llegue el momento de crecer o auditar. Contratos, legajos y archivos siempre a mano.</p>
+          <ul class="sol-features">
+            <li>Organización en Google Drive / Notion</li>
+            <li>Seguimiento de contratos y vencimientos</li>
+            <li>Acceso seguro y compartido</li>
+          </ul>
+        </div>
+
+        <div class="sol-card fade-up" style="grid-column: 1 / -1;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+            <div>
+              <div class="sol-icon">🔄</div>
+              <h3>Optimización de Procesos</h3>
+              <p>Rediseñamos tus flujos administrativos para ganar velocidad. Menos pasos, menos errores, más resultados. Comunicación directa por Slack, WhatsApp o Notion — sin burocracia.</p>
+              <ul class="sol-features" style="margin-top: 16px;">
+                <li>Mapeo de procesos actuales</li>
+                <li>Diseño de flujos optimizados</li>
+                <li>Gestión de respuestas en redes</li>
+                <li>Canal dedicado de comunicación</li>
+              </ul>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px;">
+              <p style="font-size: 0.8rem; color: var(--gray-400); margin-bottom: 20px; font-weight: 600;">Antes vs. Después</p>
+              <div style="display: flex; flex-direction: column; gap: 14px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                  <span style="color: var(--gray-600);">❌ Proceso manual</span>
+                  <span style="color: var(--gray-400);">45 min</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
+                  <span style="color: var(--teal);">✓ Con B.O. Partners</span>
+                  <span style="color: var(--teal); font-weight: 700;">8 min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINDSET -->
+  <section id="mindset">
+    <div class="container mindset-inner">
+      <div class="mindset-content fade-up">
+        <span class="tag">Nuestro Mindset</span>
+        <h2 class="section-title" style="margin-top: 16px;">Cómo trabajamos<br/><span class="accent">con vos</span></h2>
+        <p class="section-subtitle" style="margin-left: 0;">No somos un departamento más. Somos el partner estratégico que entiende tu ritmo y te acompaña a escalar.</p>
+
+        <div class="mindset-pillars">
+          <div class="pillar">
+            <span class="pillar-icon">🔍</span>
+            <div>
+              <h4>Transparencia Total</h4>
+              <p>Tu información siempre en la nube, disponible para vos en todo momento. Nada se oculta, todo se explica.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">⚡</span>
+            <div>
+              <h4>Agilidad sin Burocracia</h4>
+              <p>Comunicación directa por Slack, WhatsApp o Notion. Sin reuniones eternas ni correos formales.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <span class="pillar-icon">🔒</span>
+            <div>
+              <h4>Confidencialidad Absoluta</h4>
+              <p>Tu data es sagrada. Procesos protegidos de punta a punta. Firmamos acuerdo de confidencialidad desde el día uno.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mindset-visual fade-up">
+        <p style="font-size: 0.75rem; font-weight: 700; color: var(--gray-400); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px;">Nuestro Stack de Herramientas</p>
+        <div class="tool-stack">
+          <div class="tool-item">
+            <div class="tool-logo" style="background: #2DB67D22; color: #2DB67D;">📋</div>
+            <div class="tool-info">
+              <strong>Notion</strong>
+              <span>Gestión documental y seguimiento</span>
+            </div>
+            <span class="tool-tag">Activo</span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-logo" style="background: #4A154B22; color: #E01E5A;">💬</div>
+            <div class="tool-info">
+              <strong>Slack / WhatsApp</strong>
+              <span>Comunicación directa y en tiempo real</span>
+            </div>
+            <span class="tool-tag">Activo</span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-logo" style="background: #1A73E822; color: #1A73E8;">📊</div>
+            <div class="tool-info">
+              <strong>Google Workspace</strong>
+              <span>Documentos, sheets y almacenamiento</span>
+            </div>
+            <span class="tool-tag">Activo</span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-logo" style="background: rgba(0,201,177,0.15); color: var(--teal);">🤖</div>
+            <div class="tool-info">
+              <strong>IA & Automatizaciones</strong>
+              <span>Para reportes y flujos repetitivos</span>
+            </div>
+            <span class="tool-tag">Full Tech</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="pricing-header fade-up">
+        <span class="tag">Planes</span>
+        <h2 class="section-title">La estructura que tu<br/>emprendimiento necesita</h2>
+        <p class="section-subtitle">A la medida de tu crecimiento. Sin sorpresas, sin letra chica.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="plan-card fade-up">
+          <p class="plan-name">Starter</p>
+          <p class="plan-price"><span class="currency">$</span>A Cotizar</p>
+          <p class="plan-period">Ideal para emprendedores en despegue</p>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li class="included">Análisis de Costos mensual</li>
+            <li class="included">Gestión Documental básica</li>
+            <li class="included">Canal de comunicación dedicado</li>
+            <li>Setup de Facturación</li>
+            <li>Optimización de Procesos</li>
+            <li>Gestión de Redes</li>
+          </ul>
+          <a id="plan-starter-cta" href="#cta" class="btn-plan btn-plan-ghost">Consultar disponibilidad</a>
+        </div>
+
+        <div class="plan-card popular fade-up">
+          <div class="popular-badge">Más elegido</div>
+          <p class="plan-name">Growth</p>
+          <p class="plan-price"><span class="currency">$</span>A Cotizar</p>
+          <p class="plan-period">Para pymes que quieren escalar sin caos</p>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li class="included">Todo lo de Starter</li>
+            <li class="included">Setup de Facturación completo</li>
+            <li class="included">Control de Gastos avanzado</li>
+            <li class="included">Optimización de Procesos</li>
+            <li class="included">Reporte quincenal ejecutivo</li>
+            <li>Gestión de Redes</li>
+          </ul>
+          <a id="plan-growth-cta" href="#cta" class="btn-plan btn-plan-primary">Empezar ahora</a>
+        </div>
+
+        <div class="plan-card fade-up">
+          <p class="plan-name">Partner</p>
+          <p class="plan-price"><span class="currency">$</span>A Cotizar</p>
+          <p class="plan-period">El back-office completo para empresas en expansión</p>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li class="included">Todo lo de Growth</li>
+            <li class="included">Gestión de Redes Sociales</li>
+            <li class="included">Reportes semanales + KPIs</li>
+            <li class="included">Soporte prioritario</li>
+            <li class="included">Onboarding personalizado</li>
+            <li class="included">Consultoría estratégica mensual</li>
+          </ul>
+          <a id="plan-partner-cta" href="#cta" class="btn-plan btn-plan-ghost">Hablar con el equipo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-box fade-up">
+        <span class="tag" style="margin-bottom: 32px; display: inline-flex;">Diagnóstico Gratuito · 15 minutos</span>
+        <h2 class="cta-title">
+          Dejá de ser el<br/>
+          <span class="accent">contador, archivero<br/>y asistente</span><br/>
+          de tu propio negocio.
+        </h2>
+        <p class="cta-subtitle">
+          Contanos en qué punto está tu negocio y en 15 minutos te decimos exactamente cómo podemos ordenar el caos. Sin compromiso.
+        </p>
+        <form class="cta-form" onsubmit="handleSubmit(event)" id="contact-form">
+          <input
+            id="cta-email-input"
+            class="cta-input"
+            type="email"
+            placeholder="tu@email.com"
+            required
+          />
+          <button id="cta-submit-btn" type="submit" class="btn-primary">
+            Agendar ahora
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+        <p style="font-size: 0.78rem; color: var(--gray-600); margin-top: 16px; position: relative;">
+          Sin spam. Sin presión. Solo una charla honesta sobre tu negocio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <a class="logo" href="#hero" style="margin-bottom: 8px; display: inline-flex;">
+          <span class="logo-bo">B.<span>O</span>.</span>
+          <span class="logo-partners">Partners</span>
+        </a>
+        <p class="footer-copy" style="margin-top: 6px;">© 2025 B.O. Partners. Tu back-office, a un clic.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#pain">El Problema</a></li>
+        <li><a href="#solutions">Soluciones</a></li>
+        <li><a href="#mindset">Cómo trabajamos</a></li>
+        <li><a href="#cta">Contacto</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Form submit mock
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('cta-submit-btn');
+      const input = document.getElementById('cta-email-input');
+      btn.textContent = '¡Listo! Te contactamos pronto 🎉';
+      btn.style.background = '#00A896';
+      input.disabled = true;
+      btn.disabled = true;
+    }
+  </script>
+
+</body>
+</html>
