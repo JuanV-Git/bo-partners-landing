@@ -1090,23 +1090,39 @@
     }
 
     /* ========================================
+       FOUNDERS
+    ======================================== */
+    .founders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    /* ========================================
        RESPONSIVE
     ======================================== */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
 
+    /* --- TABLET (max 1024px) --- */
+    @media (max-width: 1024px) {
       .hero-grid {
-        grid-template-columns: 1fr;
+        gap: 40px;
       }
 
-      .hero-visual {
-        display: none;
+      .impact-card {
+        padding: 24px;
+      }
+
+      .impact-cols {
+        gap: 12px;
+      }
+
+      .impact-col {
+        padding: 16px 14px;
       }
 
       .pain-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .solutions-grid {
@@ -1118,26 +1134,255 @@
         display: block;
       }
 
+      .sol-card.featured > div {
+        display: block !important;
+      }
+
+      .sol-card[style*="grid-column: 1 / -1"] > div {
+        display: block !important;
+      }
+
+      .sol-card[style*="grid-column: 1 / -1"] > div > div:last-child {
+        margin-top: 24px;
+      }
+
+      .examples-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .founders-grid {
+        gap: 40px;
+      }
+    }
+
+    /* --- MOBILE (max 768px) --- */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      /* Hero: stack vertically, SHOW the impact card */
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-visual {
+        display: block;
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+      }
+
+      .hero-tagline {
+        font-size: clamp(1.1rem, 5vw, 1.5rem);
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-cta-group .btn-primary,
+      .hero-cta-group .btn-ghost {
+        text-align: center;
+        justify-content: center;
+      }
+
+      /* Impact card mobile adjustments */
+      .impact-card {
+        padding: 20px;
+      }
+
+      .impact-cols {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .impact-col {
+        padding: 18px 16px;
+      }
+
+      .impact-summary {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+      }
+
+      .impact-badge {
+        font-size: 1rem;
+      }
+
+      /* Hero chip: reposition for mobile */
+      .hero-chip {
+        position: relative;
+        top: auto;
+        left: auto;
+        bottom: auto;
+        margin-top: 16px;
+        width: fit-content;
+      }
+
+      /* Pain section */
+      .pain-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pain-callout {
+        padding: 32px 20px;
+      }
+
+      /* Solutions */
+      .solutions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sol-card {
+        padding: 24px;
+      }
+
+      .sol-card.featured {
+        grid-column: 1;
+        display: block;
+      }
+
+      .sol-card.featured > div {
+        display: block !important;
+      }
+
+      .sol-card[style*="grid-column: 1 / -1"] {
+        grid-column: 1 !important;
+      }
+
+      .sol-card[style*="grid-column: 1 / -1"] > div {
+        display: block !important;
+      }
+
+      .sol-card[style*="grid-column: 1 / -1"] > div > div:last-child {
+        margin-top: 20px;
+      }
+
+      /* Examples */
       .examples-grid {
         grid-template-columns: 1fr;
       }
 
+      /* Pricing */
       .pricing-grid {
         grid-template-columns: 1fr;
       }
 
+      .plan-card.popular {
+        margin-top: 10px;
+      }
+
+      /* Founders */
+      .founders-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      #founders {
+        padding: 60px 0 !important;
+      }
+
+      .founders-text .section-title {
+        text-align: center !important;
+        font-size: 1.8rem !important;
+      }
+
+      .founders-text p {
+        text-align: center;
+      }
+
+      .founders-text .tag {
+        display: block;
+        text-align: center;
+      }
+
+      /* CTA */
+      .cta-form {
+        flex-direction: column;
+      }
+
+      .cta-box {
+        padding: 48px 24px;
+      }
+
+      .cta-title {
+        font-size: clamp(1.6rem, 6vw, 2.4rem);
+      }
+
+      /* Footer */
       .footer-inner {
         flex-direction: column;
         gap: 20px;
         text-align: center;
       }
 
-      .cta-form {
-        flex-direction: column;
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
       }
 
-      .cta-box {
-        padding: 48px 28px;
+      /* Section paddings */
+      #pain {
+        padding: 80px 0 60px;
+      }
+
+      #solutions {
+        padding: 80px 0;
+      }
+
+      #mindset {
+        padding: 60px 0;
+      }
+
+      #pricing {
+        padding: 80px 0;
+      }
+
+      #cta {
+        padding: 80px 0;
+      }
+
+      .solutions-header,
+      .pricing-header,
+      .mindset-header {
+        margin-bottom: 40px;
+      }
+    }
+
+    /* --- SMALL PHONES (max 400px) --- */
+    @media (max-width: 400px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .impact-item-body strong {
+        font-size: 0.9rem;
+      }
+
+      .impact-item-body span {
+        font-size: 0.68rem;
+      }
+
+      .plan-card {
+        padding: 24px;
       }
     }
   </style>
@@ -1325,8 +1570,8 @@
 
       <div class="pain-callout fade-up">
         <p class="pain-quote">
-          "El desorden administrativo es el<br />
-          <span class="teal">techo invisible</span> de tu crecimiento."
+          Automatiza tareas<br />
+          <span class="teal">y <br /></span> optimiza procesos
         </p>
       </div>
     </div>
@@ -1524,9 +1769,10 @@
           <p class="plan-period">Un partner operativo integral para escalar sin frenos.</p>
         </div>
       </div>
-      
+
       <div style="text-align: center;" class="fade-up">
-        <a href="https://wa.me/5493516806363" target="_blank" class="btn-primary" style="display: inline-flex; align-items: center; gap: 10px; padding: 18px 36px; font-size: 1.1rem;">
+        <a href="https://wa.me/5493516806363" target="_blank" class="btn-primary"
+          style="display: inline-flex; align-items: center; gap: 10px; padding: 18px 36px; font-size: 1.1rem;">
           Cotizar por WhatsApp
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -1537,30 +1783,27 @@
   </section>
 
   <!-- FOUNDERS -->
-  <style>
-    .founders-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    @media (max-width: 768px) {
-      .founders-grid { grid-template-columns: 1fr; }
-    }
-  </style>
   <section id="founders" style="padding: 100px 0; background: var(--off-white); color: var(--navy);">
     <div class="container founders-grid">
       <div class="founders-img fade-up">
-        <img src="Paulina y Juan Trabajando.png" alt="Paulina y Juan - Fundadores de B.O. Partners" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-card);" />
+        <img src="Paulina y Juan Trabajando.png" alt="Paulina y Juan - Fundadores de B.O. Partners"
+          style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-card);" />
       </div>
       <div class="founders-text fade-up">
-        <span class="tag" style="background: rgba(13,27,42,0.06); border-color: rgba(13,27,42,0.15); color: var(--navy-light);">Quienes Somos</span>
-        <h2 class="section-title" style="margin-top: 16px; font-family: var(--font-head); font-weight: 900; font-size: 2.2rem; color: var(--navy); text-align: left;">Conocé al equipo <br/><span style="color: var(--teal);">detrás del orden</span></h2>
+        <span class="tag"
+          style="background: rgba(13,27,42,0.06); border-color: rgba(13,27,42,0.15); color: var(--navy-light);">Quienes
+          Somos</span>
+        <h2 class="section-title"
+          style="margin-top: 16px; font-family: var(--font-head); font-weight: 900; font-size: 2.2rem; color: var(--navy); text-align: left;">
+          Conocé al equipo <br /><span style="color: var(--teal);">detrás del orden</span></h2>
         <p style="font-size: 1.05rem; line-height: 1.6; color: var(--navy-light); margin-bottom: 20px;">
-          Somos <strong>Paulina y Juan</strong>. Sabemos de primera mano lo que es estar al frente de un negocio peleando contra la burocracia, los desajustes operativos y la falta de información clara.
+          Somos <strong>Paulina y Juan</strong>. Sabemos de primera mano lo que es estar al frente de un negocio
+          peleando contra la burocracia, los desajustes operativos y la falta de información clara.
         </p>
         <p style="font-size: 1.05rem; line-height: 1.6; color: var(--navy-light);">
-          Fundamos B.O. Partners porque creemos que todo emprendedor merece herramientas de nivel corporativo para tomar decisiones libres de estrés. <strong>Nosotros hacemos que la estructura fluya; vos te encargás de crecer.</strong>
+          Fundamos B.O. Partners porque creemos que todo emprendedor merece herramientas de nivel corporativo para tomar
+          decisiones libres de estrés. <strong>Nosotros hacemos que la estructura fluya; vos te encargás de
+            crecer.</strong>
         </p>
       </div>
     </div>
@@ -1636,12 +1879,12 @@
 
     // Form submit real connection via Formspree
     const form = document.getElementById('contact-form');
-    form.addEventListener("submit", async function(event) {
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
       const btn = document.getElementById('cta-submit-btn');
       const input = document.getElementById('cta-email-input');
       const data = new FormData(event.target);
-      
+
       btn.innerHTML = 'Enviando...';
       btn.style.opacity = '0.7';
 
