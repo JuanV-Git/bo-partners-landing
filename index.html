@@ -676,7 +676,7 @@
 
     .solutions-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
@@ -1588,85 +1588,86 @@
       </div>
 
       <div class="solutions-grid">
-        <div class="sol-card featured fade-up">
-          <div>
-            <h3>Setup de Facturación & Cobros</h3>
-            <p>Automatizamos y hacemos seguimiento de tus cobros para que no pierdas ni un peso. Tu ciclo de caja, bajo
-              control.</p>
-            <ul class="sol-features">
-              <li>Automatización de facturas recurrentes</li>
-              <li>Seguimiento de deudores y cobranzas</li>
-              <li>Conciliación bancaria mensual</li>
-              <li>Alertas de vencimientos</li>
-            </ul>
-          </div>
-          <div>
-            <div
-              style="background: rgba(0,201,177,0.08); border: 1px solid rgba(0,201,177,0.15); border-radius: 16px; padding: 28px;">
-              <p
-                style="font-size: 0.75rem; color: var(--teal); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">
-                Resultado típico</p>
-              <p
-                style="font-family: var(--font-head); font-size: 2rem; font-weight: 900; line-height: 1.1; margin-bottom: 8px;">
-                −3 horas/semana</p>
-              <p style="font-size: 0.85rem; color: var(--gray-400);">de tiempo dedicado a perseguir pagos y ordenar
-                facturas manualmente.</p>
-            </div>
-          </div>
-        </div>
-
+        <!-- B.O. FINANCIERO -->
         <div class="sol-card fade-up">
-          <h3>Análisis de Costos</h3>
-          <p>Reportes mensuales que se entienden, sin palabras raras. Sabés dónde está cada peso y tomás decisiones con
-            datos reales.</p>
-          <ul class="sol-features">
-            <li>Dashboard de rentabilidad mensual</li>
-            <li>Detección de gastos invisibles</li>
-            <li>Análisis por categoría</li>
-          </ul>
-        </div>
-
-        <div class="sol-card fade-up">
-          <h3>Gestión Documental</h3>
-          <p>Todo ordenado en la nube para cuando llegue el momento de crecer o auditar. Contratos, legajos y archivos
-            siempre a mano.</p>
-          <ul class="sol-features">
-            <li>Organización en Google Drive / Notion</li>
-            <li>Seguimiento de contratos y vencimientos</li>
-            <li>Acceso seguro y compartido</li>
-          </ul>
-        </div>
-
-        <div class="sol-card fade-up" style="grid-column: 1 / -1;">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-            <div>
-              <h3>Optimización de Procesos</h3>
-              <p>Rediseñamos tus flujos administrativos para ganar velocidad. Menos pasos, menos errores, más
-                resultados. Comunicación directa por Slack, WhatsApp o Notion — sin burocracia.</p>
-              <ul class="sol-features" style="margin-top: 16px;">
-                <li>Mapeo de procesos actuales</li>
-                <li>Diseño de flujos optimizados</li>
-                <li>Gestión de respuestas en redes</li>
-                <li>Canal dedicado de comunicación</li>
-              </ul>
-            </div>
-            <div
-              style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px;">
-              <p style="font-size: 0.8rem; color: var(--gray-400); margin-bottom: 20px; font-weight: 600;">Antes vs.
-                Después</p>
-              <div style="display: flex; flex-direction: column; gap: 14px;">
-                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                  <span style="color: var(--gray-600);">❌ Proceso manual</span>
-                  <span style="color: var(--gray-400);">45 min</span>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem;">
-                  <span style="color: var(--teal);">✓ Con B.O. Partners</span>
-                  <span style="color: var(--teal); font-weight: 700;">8 min</span>
-                </div>
-              </div>
-            </div>
+          <div class="sol-icon">💰</div>
+          <h3 style="color: var(--teal); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">1. B.O. Financiero</h3>
+          <p style="font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; color: var(--white); margin-bottom: 24px; line-height: 1.4;">Ordenamos tus números para que tu rentabilidad sea real.</p>
+          
+          <div style="margin-bottom: 20px;">
+            <strong style="color: var(--white); display: block; margin-bottom: 6px;">Cashflow Real:</strong>
+            <p style="font-size: 0.88rem; color: var(--gray-400);">Organizamos toda la información de tus presupuestos, gastos, ingresos y facturación. Nada queda suelto, todo tiene su lugar.</p>
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            <strong style="color: var(--white); display: block; margin-bottom: 6px;">Análisis de Costos:</strong>
+            <p style="font-size: 0.88rem; color: var(--gray-400);">Detectamos gastos invisibles y analizamos por categorías. Sabés dónde está cada peso y tomás decisiones con datos reales.</p>
+          </div>
+          
+          <div>
+            <strong style="color: var(--white); display: block; margin-bottom: 6px;">Dashboards de Rentabilidad:</strong>
+            <p style="font-size: 0.88rem; color: var(--gray-400);">Reportes mensuales que se entienden, sin palabras raras. Transformamos tus números en información estratégica.</p>
           </div>
         </div>
+
+        <!-- B.O. ADMINISTRATIVO -->
+        <div class="sol-card fade-up">
+          <div class="sol-icon">🏗️</div>
+          <h3 style="color: var(--teal); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">2. B.O. Administrativo</h3>
+          <p style="font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; color: var(--white); margin-bottom: 24px; line-height: 1.4;">La infraestructura que sostiene tu crecimiento diario.</p>
+          
+          <div style="margin-bottom: 20px;">
+            <strong style="color: var(--white); display: block; margin-bottom: 6px;">Data Management:</strong>
+            <p style="font-size: 0.88rem; color: var(--gray-400);">Recopilamos y procesamos tus registros (clientes, bases de datos, info de la empresa) para que la información sea confiable y esté a mano.</p>
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            <strong style="color: var(--white); display: block; margin-bottom: 6px;">Optimización de Procesos:</strong>
+            <p style="font-size: 0.88rem; color: var(--gray-400);">Mapeamos y diseñamos flujos optimizados. Evitamos que pierdas tiempo en tareas repetitivas que pueden sistematizarse.</p>
+          </div>
+          
+          <div>
+            <strong style="color: var(--white); display: block; margin-bottom: 6px;">Soporte Operativo:</strong>
+            <p style="font-size: 0.88rem; color: var(--gray-400);">Gestión de documentos, archivos digitales y correspondencia para que el caos administrativo desaparezca.</p>
+          </div>
+        </div>
+
+        <!-- B.O. COMERCIAL -->
+        <div class="sol-card fade-up">
+          <div class="sol-icon">🤝</div>
+          <h3 style="color: var(--teal); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">3. B.O. Comercial</h3>
+          <p style="font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; color: var(--white); margin-bottom: 24px; line-height: 1.4;">Tu primer contacto con el mundo, de forma profesional.</p>
+          
+          <div style="margin-bottom: 20px;">
+            <strong style="color: var(--white); display: block; margin-bottom: 6px;">Filtro de Consultas:</strong>
+            <p style="font-size: 0.88rem; color: var(--gray-400);">Gestionamos el primer contacto con tus clientes (vía WhatsApp/Mail) para filtrarte la información y pasarte solo lo que realmente importa.</p>
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            <strong style="color: var(--white); display: block; margin-bottom: 6px;">Gestión de Respuestas:</strong>
+            <p style="font-size: 0.88rem; color: var(--gray-400);">Nos encargamos de responder tus redes sociales con fluidez y transparencia, manteniendo tu comunidad activa.</p>
+          </div>
+          
+          <div>
+            <strong style="color: var(--white); display: block; margin-bottom: 6px;">Sincronización Operativa:</strong>
+            <p style="font-size: 0.88rem; color: var(--gray-400);">Alineamos la comunicación externa con el equipo interno para que el flujo de información sea impecable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section id="clients" style="padding: 0 0 100px; text-align: center;">
+    <div class="container fade-up">
+      <p style="font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; color: var(--gray-600); text-transform: uppercase; margin-bottom: 32px;">Pymes y empresas que ya confían en B.O. Partners</p>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 48px; opacity: 0.6;">
+        <span style="font-family: var(--font-head); font-size: 1.7rem; font-weight: 900; color: var(--gray-400); letter-spacing: -0.02em;">Paclín</span>
+        <span style="font-family: var(--font-head); font-size: 1.7rem; font-weight: 900; color: var(--gray-400); letter-spacing: -0.02em;">Floma</span>
+        <span style="font-family: var(--font-head); font-size: 1.7rem; font-weight: 900; color: var(--gray-400); letter-spacing: -0.02em;">Forvia</span>
+        <span style="font-family: var(--font-head); font-size: 1.7rem; font-weight: 900; color: var(--gray-400); letter-spacing: -0.02em;">Nas Work</span>
+        <span style="font-family: var(--font-head); font-size: 1.7rem; font-weight: 900; color: var(--gray-400); letter-spacing: -0.02em;">Cdo</span>
+        <span style="font-family: var(--font-head); font-size: 1.7rem; font-weight: 900; color: var(--gray-400); letter-spacing: -0.02em;">JCT</span>
       </div>
     </div>
   </section>
